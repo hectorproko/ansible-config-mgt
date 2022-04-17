@@ -13,7 +13,7 @@
     - name: ensure wireshark is at the latest version
       apt:
         name: wireshark
-        state: latest
+        state: absent #latest
 
 - name: update db servers
   hosts: _NFS
@@ -28,4 +28,4 @@
     - name: ensure wireshark is at the latest version
       yum:
         name: wireshark
-        state: latest
+        state: absent #latest
