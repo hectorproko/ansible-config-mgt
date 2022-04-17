@@ -1,0 +1,31 @@
+---
+- name: update web servers
+  hosts: _Jenkins_Ansible
+  remote_user: ubuntu
+
+  vars_files:
+    - /etc/ansible/vars/info.yml
+
+  tasks:
+    - name: Pinging
+      ping:
+
+    - name: ensure wireshark is at the latest version
+      apt:
+        name: wireshark
+        state: absent #latest
+
+- name: update db servers
+  hosts: _NFS
+  remote_user: ec2-user
+
+  vars_files:
+    - /etc/ansible/vars/info.yml
+
+  tasks:
+    - name: Pinging
+      ping:
+    - name: ensure wireshark is at the latest version
+      yum:
+        name: wireshark
+        state: absent #latest
