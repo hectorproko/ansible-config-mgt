@@ -1,10 +1,4 @@
 ---
-- name: uat servers
-  hosts: _uat_web
-  roles: webserver
-  tasks:
-    - name: Pinging
-      ping:
-
-
-#- name: update web servers
+- hosts: webservers
+  roles:
+    - webservers
