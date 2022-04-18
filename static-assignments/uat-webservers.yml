@@ -1,3 +1,9 @@
 ---
 - hosts: _uat_web
-- roles: webserver
+  roles: webserver
+  tasks:
+    - name: Pinging
+      ping:
+
+
+#- name: update web servers
