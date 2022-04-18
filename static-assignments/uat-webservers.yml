@@ -1,4 +1,4 @@
 ---
-- Name: UAT server 
+- name: UAT server 
   hosts: _uat_web
   roles: webserver
