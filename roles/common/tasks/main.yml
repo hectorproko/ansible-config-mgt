@@ -1,0 +1,5 @@
+---
+# tasks file for common
+- name: Pinging
+  become: true
+  ping:
