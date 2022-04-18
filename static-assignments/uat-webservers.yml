@@ -1,5 +1,6 @@
 ---
-- hosts: _uat_web
+- name: uat servers
+  hosts: _uat_web
   roles: webserver
   tasks:
     - name: Pinging
