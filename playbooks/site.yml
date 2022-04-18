@@ -5,5 +5,5 @@
 - hosts: all
 - import_playbook: ../static-assignments/common-del.yml
 
-- hosts: all
+- hosts: _uat_web
 - import_playbook: ../static-assignments/uat-webservers.yml
