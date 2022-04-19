@@ -2,6 +2,7 @@
 - name: update web servers
   hosts: _Jenkins_Ansible
   remote_user: ubuntu
+  ansible_ssh_user: ubuntu
 
   vars_files:
     - /etc/ansible/vars/info.yml
@@ -18,6 +19,7 @@
 - name: update db servers
   hosts: _NFS
   remote_user: ec2-user
+  ansible_ssh_user: ec2-user
 
   vars_files:
     - /etc/ansible/vars/info.yml
