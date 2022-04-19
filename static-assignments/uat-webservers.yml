@@ -1,5 +1,5 @@
 ---
-- hosts: _uat_web
+- hosts: uat-webservers
   remote_user: ec2-user
   roles:
     - webservers
