@@ -32,10 +32,10 @@
 #    import_playbook: ../static-assignments/loadbalancers.yml
 #  when: load_balancer_is_required 
 
-#- hosts: lb
-#- name: Loadbalancers assignment
-#  import_playbook: ../static-assignments/loadbalancers.yml
-#  when: load_balancer_is_required  #include: ../dynamic-assignments/env-vars.yml
+ - hosts: lb
+ - name: Loadbalancers assignment
+   import_playbook: ../static-assignments/loadbalancers.yml
+   when: load_balancer_is_required  #include: ../dynamic-assignments/env-vars.yml
   
 
 
