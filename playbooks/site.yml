@@ -8,6 +8,9 @@
 - hosts: uat-webservers #_uat_web
 - import_playbook: ../static-assignments/uat-webservers.yml
 
+- hosts: lb
+- import_playbook: ../static-assignments/loadbalancers.yml
+
 #- name: Loadbalancers assignment
 #  hosts: lb
 #  import_playbook: ../static-assignments/loadbalancers.yml
