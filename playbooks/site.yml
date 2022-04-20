@@ -9,7 +9,7 @@
 - import_playbook: ../static-assignments/uat-webservers.yml
 
 - name: Loadbalancers assignment
-- hosts: lb
+  hosts: lb
   import_playbook: ../static-assignments/loadbalancers.yml
   when: load_balancer_is_required 
 
