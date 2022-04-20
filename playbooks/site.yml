@@ -8,7 +8,7 @@
 #  tags:
 #    - always
 
- - hosts: webservers
+ - hosts: uat-webservers
  - name: Include dynamic variables 
    import_playbook: ../static-assignments/common.yml 
    include: ../dynamic-assignments/env-vars.yml
