@@ -6,7 +6,7 @@
       include_vars: "{{ item }}" #include is deprecated now we use variants include_role, include_tasks, separating features of module
       with_first_found: #implies that the first one found is used
         - files:
-            - uat.yml
+            - uat.yml #this will only load the first file in the loop
             - stage.yml
             - prod.yml
             - dev.yml   
