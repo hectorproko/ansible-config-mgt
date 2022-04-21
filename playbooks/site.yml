@@ -38,7 +38,7 @@
 
 - name: Loadbalancers assignment
   import_playbook: ../static-assignments/loadbalancers.yml
-  #when: load_balancer_is_required  #include: ../dynamic-assignments/env-vars.yml
+  when: load_balancer_is_required
   
 
 
