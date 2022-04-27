@@ -1,14 +1,13 @@
 pipeline {
     agent any
-
-    //environment {
-    //    ANSIBLE_CONFIG="${WORKSPACE}/deploy/ansible.cfg"
-    //}
-
+    
+    environment {
+        ANSIBLE_CONFIG="${WORKSPACE}/deploy/ansible.cfg"
+    }
     parameters {
         string(name: 'inventory', defaultValue: 'uat',  description: 'This is the inventory file for the environment to deploy configuration')
     }
-
+    
     stages {
         stage("Initial cleanup") {
             steps {
@@ -17,13 +16,12 @@ pipeline {
                 }
             }
         }
-
-        stage('Checkout SCM') {
+        
+        stage('SCM Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/hectorproko/ansible-config-mgt.git'  
+                git branch: 'HisJenkinsfile', url: 'https://github.com/hectorproko/ansible-config-mgt.git'
             }
         }
-
         stage('Prepare Ansible For Execution') {
             steps {
                 sh 'echo ${WORKSPACE}' 
@@ -31,18 +29,17 @@ pipeline {
                 sh 'export ANSIBLE_CONFIG=${WORKSPACE}/deploy/ansible.cfg'
             }
         }
-
-       stage('Run Ansible playbook') {
+        stage('Execute Ansible') {
             steps {
-                ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '${WORKSPACE}/inventory/${inventory}.ini', playbook: 'playbooks/site.yml'
+                ansiblePlaybook credentialsId: 'private-key', installation: 'Ansible', inventory: '${WORKSPACE}/inventory/${inventory}.ini', playbook: 'playbooks/site.yml'
+                //ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '${WORKSPACE}/inventory/${inventory}', playbook: 'playbooks/site.yml'
             }
-       }
-
-      stage('Clean Workspace after build'){
-            steps {
-                cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
-            }
-       }
-        
+        }
     }
 }
+
+/* The code below will print the words Hello World
+to the screen, and it is amazing */
+
+// ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '${WORKSPACE}/inventory/${inventory}', playbook: 'playbooks/site.yml'
+
