@@ -36,6 +36,8 @@ pipeline {
     }
 }
 
+/* The code below will print the words Hello World
+to the screen, and it is amazing */
 
 // ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '${WORKSPACE}/inventory/${inventory}', playbook: 'playbooks/site.yml'
 
