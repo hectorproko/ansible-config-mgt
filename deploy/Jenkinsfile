@@ -8,6 +8,13 @@ pipeline {
     }
 
     stages {
+        stage("Initial cleanup") {
+            steps {
+                dir("${WORKSPACE}") {
+                deleteDir()
+                }
+            }
+        }
         stage('SCM Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/hectorproko/ansible-config-mgt.git'
