@@ -19,7 +19,7 @@ pipeline {
         
         stage('SCM Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/hectorproko/ansible-config-mgt.git'
+                git branch: 'HisJenkinsfile', url: 'https://github.com/hectorproko/ansible-config-mgt.git'
             }
         }
         stage('Prepare Ansible For Execution') {
