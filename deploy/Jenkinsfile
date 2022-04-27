@@ -1,23 +1,23 @@
 pipeline {
     agent any
-
-    //environment {
-    //    ANSIBLE_CONFIG="${WORKSPACE}/deploy/ansible.cfg"
-    //}
-
     parameters {
         string(name: 'inventory', defaultValue: 'dev',  description: 'This is the inventory file for the environment to deploy configuration')
     }
-        stage('Checkout SCM') {
+
+    stages {
+        stage('SCM Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/hectorproko/ansible-config-mgt.git'  
+                git branch: 'main', url: 'https://github.com/hectorproko/ansible-config-mgt.git'
             }
         }
-       stage('Run Ansible playbook') {
+        stage('Execute Ansible') {
             steps {
-                ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '${WORKSPACE}/inventory/${inventory}', playbook: 'playbooks/site.yml'
+                ansiblePlaybook credentialsId: 'private-key', installation: 'Ansible', inventory: '${WORKSPACE}/inventory/${inventory}', playbook: 'playbooks/site.yml'
             }
-       }
-        
+        }
     }
 }
+
+
+// ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '${WORKSPACE}/inventory/${inventory}', playbook: 'playbooks/site.yml'
+
