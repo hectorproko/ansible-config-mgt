@@ -35,6 +35,20 @@ pipeline {
                 //ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '${WORKSPACE}/inventory/${inventory}', playbook: 'playbooks/site.yml'
             }
         }
+        stage ('Deploy Artifact') {
+            steps {
+              script {
+                def server = Artifactory.server 'artifactory-server'
+                def uploadSpec = """{
+                  "files": [{
+                     "pattern": "php-todo.zip",
+                     "target": "php-todo"
+                  }]
+                }"""
+              server.upload(uploadSpec) 
+              }
+            }
+        }
     }
 }
 
