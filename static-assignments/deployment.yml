@@ -53,7 +53,7 @@
         url: http://3.220.20.204:8082/artifactory/php-todo-Repo/php-todo
         dest: /home/ec2-user/
         url_username: hector
-        url_password: G0dBless!
+        url_password: G0dBless! #need to fix this
 
 
     - name: unzip the artifacts
