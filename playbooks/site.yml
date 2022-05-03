@@ -33,15 +33,13 @@
 #  when: load_balancer_is_required 
 
 
-- name: include the env-vars playbook
-  import_playbook: ../dynamic-assignments/env-vars.yml
+#- name: include the env-vars playbook
+#  import_playbook: ../dynamic-assignments/env-vars.yml
 
-- name: Loadbalancers assignment
-  import_playbook: ../static-assignments/loadbalancers.yml
-  when: load_balancer_is_required
+#- name: Loadbalancers assignment
+#  import_playbook: ../static-assignments/loadbalancers.yml
+#  when: load_balancer_is_required
   
-
-
-
-
+- name: Deploy php-todo
+  import_playbook: ../static-assignments/deployment.yml
 
